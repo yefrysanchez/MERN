@@ -10,12 +10,16 @@ dotenv_1.default.config();
 //Create Express App
 const app = (0, express_1.default)();
 const port = process.env.PORT || 8000;
+const data = {
+    message: "Goodbuy, World"
+};
 //define first route of APP
 app.get("/", (req, res) => {
-    res.send("hello World ttt");
+    res.send(data);
 });
-app.get("/hello", (req, res) => {
-    res.send("welcome back");
+app.get("/?name=", (req, res) => {
+    const q = req.query;
+    res.send(data);
 });
 //Execute APP and LIsten Request to PORT
 app.listen(port, () => {

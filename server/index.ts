@@ -8,15 +8,21 @@ dotenv.config();
 const app: Express = express();
 const port: string | number = process.env.PORT || 8000;
 
+const data = {
+  message : "Goodbuy, World"
+}
+
 //define first route of APP
 app.get("/", (req: Request, res: Response) => {
-  res.send("hello World ttt");
+  res.send(data);
 });
 
-app.get("/hello", (req: Request, res: Response) => {
-    res.send("welcome back");
-  });
-  
+app.get("/?name=", (req: Request, res: Response) => {
+  const q = req.query
+  res.send(data);
+});
+
+
 
 
 //Execute APP and LIsten Request to PORT
